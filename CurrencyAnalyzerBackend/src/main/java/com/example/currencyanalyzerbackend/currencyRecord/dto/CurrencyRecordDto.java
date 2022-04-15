@@ -15,7 +15,9 @@ import java.util.Date;
 public class CurrencyRecordDto {
 
     private Date date;
+
     private Double bidPrice;
+
     private Double salePrice;
 
 }

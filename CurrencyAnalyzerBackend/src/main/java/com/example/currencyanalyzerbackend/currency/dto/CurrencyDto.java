@@ -15,7 +15,9 @@ import java.util.List;
 public class CurrencyDto {
 
     private String name;
+
     private String code;
+
     private List<CurrencyRecordDto> records;
 
 }
