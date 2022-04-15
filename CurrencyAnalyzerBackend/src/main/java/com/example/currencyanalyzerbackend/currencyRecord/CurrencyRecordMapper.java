@@ -3,6 +3,8 @@ package com.example.currencyanalyzerbackend.currencyRecord;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -10,7 +10,8 @@ public class CurrencyService {
     private final CurrencyRequester currencyRequester;
 
     public CurrencyDto getCurrencyRecords(String currencyCode, Integer numberOfDays){
-
+        CurrencyRequestedDto requestedDto = currencyRequester.getRequestedCurrency(currencyCode, numberOfDays);
+        return CurrencyMapper.requestedDtoToDto(requestedDto);
     }
 
 }

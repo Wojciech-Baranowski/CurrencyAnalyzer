@@ -7,8 +7,13 @@ import org.springframework.context.annotation.Configuration;
 public class CurrencyConfiguration {
 
     @Bean
-    CurrencyService currencyService(){
-        CurrencyRequester currencyRequester = new CurrencyRequester();
-        return new CurrencyService(currencyRequester);
+    public CurrencyRequester currencyRequester(){
+        return new CurrencyRequester();
     }
+    @Bean
+    public CurrencyService currencyService(){
+        return new CurrencyService(currencyRequester());
+    }
+
+
 }

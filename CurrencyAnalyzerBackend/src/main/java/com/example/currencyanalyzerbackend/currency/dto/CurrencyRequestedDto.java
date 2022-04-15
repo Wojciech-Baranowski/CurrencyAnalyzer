@@ -1,6 +1,7 @@
 package com.example.currencyanalyzerbackend.currency.dto;
 
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +15,16 @@ import java.util.List;
 @Builder
 public class CurrencyRequestedDto {
 
+    @JsonProperty("table")
     private String tableId;
+
+    @JsonProperty("currency")
     private String name;
+
     private String code;
+
+    @JsonProperty("rates")
     private List<CurrencyRecordRequestedDto> records;
+
 
 }

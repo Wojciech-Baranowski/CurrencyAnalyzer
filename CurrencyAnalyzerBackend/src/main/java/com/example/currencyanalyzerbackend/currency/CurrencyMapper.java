@@ -3,6 +3,8 @@ package com.example.currencyanalyzerbackend.currency;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyDto;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecordMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CurrencyMapper {
 
@@ -13,4 +15,13 @@ public class CurrencyMapper {
                 .records(CurrencyRecordMapper.requestedDtoListToDtoList(requestedDto.getRecords()))
                 .build();
     }
+
+    public static CurrencyRequestedDto jsonStringToRequestedDto(String jsonString) {
+        try {
+            return new ObjectMapper().readValue(jsonString, CurrencyRequestedDto.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
