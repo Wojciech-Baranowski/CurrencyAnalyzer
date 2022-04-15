@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.currency.dto;
+package com.example.currencyanalyzerbackend.currencyRecord.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyRecordDto {
+public class CurrencyRecordRequestedDto {
 
+    private String id;
     private Date date;
     private Double bidPrice;
     private Double salePrice;

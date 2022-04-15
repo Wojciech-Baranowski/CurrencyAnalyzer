@@ -1,6 +1,6 @@
 package com.example.currencyanalyzerbackend.currency.dto;
 
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordDto;
+import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,10 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyDto {
+public class CurrencyRequestedDto {
 
+    private String tableId;
     private String name;
     private String code;
-    private List<CurrencyRecordDto> records;
+    private List<CurrencyRecordRequestedDto> records;
 
 }
