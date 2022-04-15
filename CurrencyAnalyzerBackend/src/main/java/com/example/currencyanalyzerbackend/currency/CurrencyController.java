@@ -1,6 +1,6 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyDto;
+import com.example.currencyanalyzerbackend.date.RequestDataDto;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +15,14 @@ public class CurrencyController {
 
     private final CurrencyService currencyService;
 
-    @GetMapping(path = "/{currencyCode}/{numberOfDays}")
-    public CurrencyResponseDto getCurrencyRecords(@PathVariable String currencyCode, @PathVariable Integer numberOfDays){
-        return currencyService.getCurrencyRecords(currencyCode, numberOfDays);
+    @GetMapping(path = "/{currencyCode}/{startDate}/{endDate}")
+    public CurrencyResponseDto getCurrencyRecords(
+            @PathVariable String currencyCode,
+            @PathVariable String startDate,
+            @PathVariable String endDate
+    ){
+        RequestDataDto requestDataDto = new RequestDataDto(currencyCode, startDate, endDate);
+        return currencyService.getCurrencyRecords(requestDataDto);
     }
 
 }
