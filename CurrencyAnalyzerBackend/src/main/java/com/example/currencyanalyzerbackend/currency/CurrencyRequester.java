@@ -26,6 +26,7 @@ public class CurrencyRequester {
 
     public CurrencyRequestedDto getRequestedCurrency(RequestDataDto fullRequestDataDto) {
         List<CurrencyRequestedDto> shortRequestedCurrencyDtos = getShortRequestedCurrencyDtos(fullRequestDataDto);
+
         return CurrencyRequestedDto.builder()
                 .tableId(shortRequestedCurrencyDtos.get(0).getTableId())
                 .code(shortRequestedCurrencyDtos.get(0).getCode())
@@ -59,6 +60,7 @@ public class CurrencyRequester {
         Date yearAfterCurrentStartDate = DateService.yearAfter(currentRequestStartDate);
         Date endDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getEndDate());
         Date currentRequestEndDate = DateService.chooseEarlierDate(yearAfterCurrentStartDate, endDate);
+
         return RequestDataDto.builder()
                 .currencyCode(fullRequestDataDto.getCurrencyCode())
                 .startDate(DateMapper.dateToStringDayLast(currentRequestStartDate))
@@ -68,6 +70,7 @@ public class CurrencyRequester {
 
     private CurrencyRequestedDto request(RequestDataDto requestDataDto){
         HttpRequest request = createRequest(requestDataDto);
+
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
                 .thenApply(CurrencyMapper::jsonStringToRequestedDto)
@@ -76,7 +79,7 @@ public class CurrencyRequester {
 
     private HttpRequest createRequest(RequestDataDto requestDataDto) {
         String url = createUrl(requestDataDto);
-        System.out.println(url);
+
         return HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();

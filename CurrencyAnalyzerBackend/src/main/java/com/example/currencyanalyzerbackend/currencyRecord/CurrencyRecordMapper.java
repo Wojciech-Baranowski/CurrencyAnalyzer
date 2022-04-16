@@ -1,7 +1,6 @@
 package com.example.currencyanalyzerbackend.currencyRecord;
 
 import com.example.currencyanalyzerbackend.date.DateMapper;
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordResponseDto;
 
@@ -10,31 +9,31 @@ import java.util.stream.Collectors;
 
 public class CurrencyRecordMapper {
 
-    public static List<CurrencyRecordDto> requestedDtoListToDtoList(List<CurrencyRecordRequestedDto> requestedDtos){
+    public static List<CurrencyRecord> requestedDtoListToObjectList(List<CurrencyRecordRequestedDto> requestedDtos){
         return requestedDtos.stream()
-                .map(CurrencyRecordMapper::requestedDtoToDto)
+                .map(CurrencyRecordMapper::requestedDtoToObject)
                 .collect(Collectors.toList());
     }
 
-    public static CurrencyRecordDto requestedDtoToDto(CurrencyRecordRequestedDto requestedDto){
-        return CurrencyRecordDto.builder()
+    public static CurrencyRecord requestedDtoToObject(CurrencyRecordRequestedDto requestedDto){
+        return CurrencyRecord.builder()
                 .date(requestedDto.getDate())
                 .bidPrice(requestedDto.getBidPrice())
                 .salePrice(requestedDto.getSalePrice())
                 .build();
     }
 
-    public static List<CurrencyRecordResponseDto> dtoListToResponseDtoList(List<CurrencyRecordDto> dtos){
-        return dtos.stream()
-                .map(CurrencyRecordMapper::dtoToResponseDto)
+    public static List<CurrencyRecordResponseDto> objectListToResponseDtoList(List<CurrencyRecord> records){
+        return records.stream()
+                .map(CurrencyRecordMapper::objectToResponseDto)
                 .collect(Collectors.toList());
     }
 
-    public static CurrencyRecordResponseDto dtoToResponseDto(CurrencyRecordDto dto){
+    public static CurrencyRecordResponseDto objectToResponseDto(CurrencyRecord record){
         return CurrencyRecordResponseDto.builder()
-                .date(DateMapper.dateToStringDayFirst(dto.getDate()))
-                .bidPrice(dto.getBidPrice())
-                .salePrice(dto.getSalePrice())
+                .date(DateMapper.dateToStringDayFirst(record.getDate()))
+                .bidPrice(record.getBidPrice())
+                .salePrice(record.getSalePrice())
                 .build();
     }
 

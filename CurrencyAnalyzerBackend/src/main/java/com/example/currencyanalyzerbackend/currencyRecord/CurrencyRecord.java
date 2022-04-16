@@ -1,18 +1,17 @@
-package com.example.currencyanalyzerbackend.currencyRecord.dto;
+package com.example.currencyanalyzerbackend.currencyRecord;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyRecordDto {
+public class CurrencyRecord {
 
     private Date date;
 

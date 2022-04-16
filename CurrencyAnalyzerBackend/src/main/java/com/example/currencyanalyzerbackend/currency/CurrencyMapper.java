@@ -1,29 +1,29 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyDto;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyResponseDto;
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecordMapper;
+import com.example.currencyanalyzerbackend.currencyRecordDifference.CurrencyRecordDifferenceMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.Currency;
-
 public class CurrencyMapper {
 
-    public static CurrencyDto requestedDtoToDto(CurrencyRequestedDto requestedDto){
-        return CurrencyDto.builder()
+    public static Currency requestedDtoToObject(CurrencyRequestedDto requestedDto){
+        return Currency.builder()
                 .name(requestedDto.getName())
                 .code(requestedDto.getCode())
-                .records(CurrencyRecordMapper.requestedDtoListToDtoList(requestedDto.getRecords()))
+                .records(CurrencyRecordMapper.requestedDtoListToObjectList(requestedDto.getRecords()))
                 .build();
     }
 
-    public static CurrencyResponseDto dtoToResponseDto(CurrencyDto dto){
+    public static CurrencyResponseDto objectToResponseDto(Currency currency){
         return CurrencyResponseDto.builder()
-                .name(dto.getName())
-                .code(dto.getCode())
-                .records(CurrencyRecordMapper.dtoListToResponseDtoList(dto.getRecords()))
+                .name(currency.getName())
+                .code(currency.getCode())
+                .records(CurrencyRecordMapper.objectListToResponseDtoList(currency.getRecords()))
+                .recordsDifferences(
+                        CurrencyRecordDifferenceMapper.dtoListToResponseDtoList(currency.getRecordsDifferences()))
                 .build();
     }
 
