@@ -1,6 +1,6 @@
 package com.example.currencyanalyzerbackend.currencyRecordDifference.dto;
 
-import com.example.currencyanalyzerbackend.NumberRounder;
+import com.example.currencyanalyzerbackend.numberRounder.NumberRounder;
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
 import com.example.currencyanalyzerbackend.date.DateMapper;
 import lombok.AllArgsConstructor;

@@ -28,7 +28,7 @@ public class Currency {
     public void setRecordsDifferences(){
         recordsDifferences = new LinkedList<>();
         for(int i = 1; i < records.size(); i++){
-            recordsDifferences.add(new CurrencyRecordDifferenceDto(records.get(max(i - 1, 1)), records.get(i)));
+            recordsDifferences.add(new CurrencyRecordDifferenceDto(records.get(i - 1), records.get(i)));
         }
     }
 

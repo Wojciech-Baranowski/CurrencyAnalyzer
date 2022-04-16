@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class CurrencyRequester {
 
-    private static final String URL_PREFIX = "http://api.nbp.pl/api/exchangerates/rates/C/";
+    private static final String URL_PREFIX = "https://api.nbp.pl/api/exchangerates/rates/C/";
     private final HttpClient client;
 
     public CurrencyRequester() {
@@ -49,7 +49,7 @@ public class CurrencyRequester {
         Date endDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getEndDate());
         Date currentStartDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getStartDate());
 
-        while (currentStartDate.before(endDate)) {
+        while (currentStartDate.before(endDate) || currentStartDate.equals(endDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));
             currentStartDate = DateService.yearAndDayAfter(currentStartDate);
         }
@@ -79,7 +79,6 @@ public class CurrencyRequester {
 
     private HttpRequest createRequest(RequestDataDto requestDataDto) {
         String url = createUrl(requestDataDto);
-
         return HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();

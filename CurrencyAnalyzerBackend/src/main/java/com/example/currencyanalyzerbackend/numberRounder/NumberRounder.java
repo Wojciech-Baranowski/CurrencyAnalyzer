@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend;
+package com.example.currencyanalyzerbackend.numberRounder;
 
 public class NumberRounder {
 
