@@ -1,0 +1,9 @@
+
+<form [formGroup]="filter" (ngSubmit)="onSubmit()">
+    <input type="text" id="currencyCode" name="currencyCode" formControlName="currencyCode">
+    <input type="text" id="startDate" name="startDate" formControlName="startDate">
+    <input type="text" id="endDate" name="endDate" formControlName="endDate">
+    <button class="button" type="submit">Submit</button>
+</form>
+
+<plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
