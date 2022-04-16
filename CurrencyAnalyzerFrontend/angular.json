@@ -66,6 +66,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "CurrencyAnalyzerFrontend:build",
+            "proxyConfig": "./proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "CurrencyAnalyzerFrontend:build:production"
@@ -74,7 +78,7 @@
               "browserTarget": "CurrencyAnalyzerFrontend:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

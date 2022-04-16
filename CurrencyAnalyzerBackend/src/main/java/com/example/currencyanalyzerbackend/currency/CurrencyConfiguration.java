@@ -10,10 +10,10 @@ public class CurrencyConfiguration {
     public CurrencyRequester currencyRequester(){
         return new CurrencyRequester();
     }
-    @Bean
-    public CurrencyService currencyService(){
-        return new CurrencyService(currencyRequester());
-    }
 
+    @Bean
+    public CurrencyService currencyService(CurrencyRequester currencyRequester){
+        return new CurrencyService(currencyRequester);
+    }
 
 }
