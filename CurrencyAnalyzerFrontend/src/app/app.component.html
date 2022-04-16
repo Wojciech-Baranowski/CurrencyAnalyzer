@@ -6,4 +6,6 @@
     <button class="button" type="submit">Submit</button>
 </form>
 
-<plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+<plotly-plot [data]="priceTraces" [layout]="layout"></plotly-plot>
+
+<plotly-plot [data]="differenceTraces" [layout]="layout"></plotly-plot>

@@ -46,8 +46,8 @@ public class CurrencyRequester {
 
     private List<RequestDataDto> getShortRequestDataDtos(RequestDataDto fullRequestDataDto) {
         List<RequestDataDto> shortRequestDataDtos = new LinkedList<>();
-        Date endDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getEndDate());
-        Date currentStartDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getStartDate());
+        Date endDate = DateMapper.stringToDate(fullRequestDataDto.getEndDate());
+        Date currentStartDate = DateMapper.stringToDate(fullRequestDataDto.getStartDate());
 
         while (currentStartDate.before(endDate) || currentStartDate.equals(endDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));
@@ -58,13 +58,13 @@ public class CurrencyRequester {
 
     private RequestDataDto getShortRequestDataDto(RequestDataDto fullRequestDataDto, Date currentRequestStartDate){
         Date yearAfterCurrentStartDate = DateService.yearAfter(currentRequestStartDate);
-        Date endDate = DateMapper.stringToDateDayLast(fullRequestDataDto.getEndDate());
+        Date endDate = DateMapper.stringToDate(fullRequestDataDto.getEndDate());
         Date currentRequestEndDate = DateService.chooseEarlierDate(yearAfterCurrentStartDate, endDate);
 
         return RequestDataDto.builder()
                 .currencyCode(fullRequestDataDto.getCurrencyCode())
-                .startDate(DateMapper.dateToStringDayLast(currentRequestStartDate))
-                .endDate(DateMapper.dateToStringDayLast(currentRequestEndDate))
+                .startDate(DateMapper.dateToString(currentRequestStartDate))
+                .endDate(DateMapper.dateToString(currentRequestEndDate))
                 .build();
     }
 

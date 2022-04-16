@@ -31,7 +31,7 @@ public class CurrencyRecordMapper {
 
     public static CurrencyRecordResponseDto objectToResponseDto(CurrencyRecord record){
         return CurrencyRecordResponseDto.builder()
-                .date(DateMapper.dateToStringDayFirst(record.getDate()))
+                .date(DateMapper.dateToString(record.getDate()))
                 .bidPrice(record.getBidPrice())
                 .salePrice(record.getSalePrice())
                 .build();

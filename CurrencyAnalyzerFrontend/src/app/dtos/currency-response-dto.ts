@@ -1,14 +1,23 @@
 import {CurrencyRecordResponseDto} from "./currency-record-response-dto";
 import {CurrencyRecordDifferenceResponseDto} from "./currency-record-difference-response-dto";
 
-export interface CurrencyResponseDto {
+export class CurrencyResponseDto {
 
-  name: string;
+    name: string;
 
-  code: string;
+    code: string;
 
-  records: CurrencyRecordResponseDto[];
+    records: CurrencyRecordResponseDto[];
 
-  recordsDifferences: CurrencyRecordDifferenceResponseDto[];
+    recordsDifferences: CurrencyRecordDifferenceResponseDto[];
+
+    constructor() {
+        this.name = '';
+        this.code = '';
+        this.records = [];
+        this.records.push(new CurrencyRecordResponseDto())
+        this.recordsDifferences = [];
+        this.recordsDifferences.push(new CurrencyRecordDifferenceResponseDto())
+    }
 
 }

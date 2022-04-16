@@ -1,9 +1,15 @@
-export interface CurrencyRecordResponseDto{
+export class CurrencyRecordResponseDto{
 
-  date: string;
+    date: string;
 
-  bidPrice: number;
+    bidPrice: number;
 
-  salePrice: number;
+    salePrice: number;
+
+    constructor() {
+        this.date = '';
+        this.bidPrice = 0;
+        this.salePrice = 0;
+    }
 
 }
