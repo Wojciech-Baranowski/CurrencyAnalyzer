@@ -1,5 +1,6 @@
 package com.example.currencyanalyzerbackend.currencyRecord;
 
+import com.example.currencyanalyzerbackend.currency.Currency;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +19,11 @@ public class CurrencyRecord {
     private Double bidPrice;
 
     private Double salePrice;
+
+    public CurrencyRecord(CurrencyRecord currencyRecord, Date date){
+        this.date = date;
+        this.bidPrice = currencyRecord.getBidPrice();
+        this.salePrice = currencyRecord.getSalePrice();
+    }
 
 }

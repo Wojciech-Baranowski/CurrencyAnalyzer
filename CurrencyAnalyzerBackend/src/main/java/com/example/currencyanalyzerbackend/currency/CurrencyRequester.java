@@ -1,8 +1,7 @@
 package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
-import com.example.currencyanalyzerbackend.date.DateMapper;
-import com.example.currencyanalyzerbackend.date.DateService;
+import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 import com.example.currencyanalyzerbackend.date.RequestDataDto;
 
 import java.net.URI;
@@ -15,9 +14,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.currencyanalyzerbackend.date.DateMapper.dateToString;
+import static com.example.currencyanalyzerbackend.date.DateMapper.stringToDate;
+import static com.example.currencyanalyzerbackend.date.DateService.*;
+
 public class CurrencyRequester {
 
     private static final String URL_PREFIX = "https://api.nbp.pl/api/exchangerates/rates/C/";
+
     private final HttpClient client;
 
     public CurrencyRequester() {
@@ -31,11 +35,16 @@ public class CurrencyRequester {
                 .tableId(shortRequestedCurrencyDtos.get(0).getTableId())
                 .code(shortRequestedCurrencyDtos.get(0).getCode())
                 .name(shortRequestedCurrencyDtos.get(0).getName())
-                .records(shortRequestedCurrencyDtos.stream()
-                        .map(CurrencyRequestedDto::getRecords)
-                        .flatMap(Collection::stream)
-                        .collect(Collectors.toList()))
+                .records(mergeRequestedCurrencyRecordsDtos(shortRequestedCurrencyDtos))
                 .build();
+    }
+
+    private List<CurrencyRecordRequestedDto> mergeRequestedCurrencyRecordsDtos(
+            List<CurrencyRequestedDto> shortRequestedCurrencyDtos) {
+        return shortRequestedCurrencyDtos.stream()
+                .map(CurrencyRequestedDto::getRecords)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     private List<CurrencyRequestedDto> getShortRequestedCurrencyDtos(RequestDataDto fullRequestDataDto){
@@ -46,25 +55,25 @@ public class CurrencyRequester {
 
     private List<RequestDataDto> getShortRequestDataDtos(RequestDataDto fullRequestDataDto) {
         List<RequestDataDto> shortRequestDataDtos = new LinkedList<>();
-        Date endDate = DateMapper.stringToDate(fullRequestDataDto.getEndDate());
-        Date currentStartDate = DateMapper.stringToDate(fullRequestDataDto.getStartDate());
+        Date endDate = stringToDate(fullRequestDataDto.getEndDate());
+        Date currentStartDate = weekBefore(stringToDate(fullRequestDataDto.getStartDate()));
 
         while (currentStartDate.before(endDate) || currentStartDate.equals(endDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));
-            currentStartDate = DateService.yearAndDayAfter(currentStartDate);
+            currentStartDate = yearAndDayAfter(currentStartDate);
         }
         return shortRequestDataDtos;
     }
 
     private RequestDataDto getShortRequestDataDto(RequestDataDto fullRequestDataDto, Date currentRequestStartDate){
-        Date yearAfterCurrentStartDate = DateService.yearAfter(currentRequestStartDate);
-        Date endDate = DateMapper.stringToDate(fullRequestDataDto.getEndDate());
-        Date currentRequestEndDate = DateService.chooseEarlierDate(yearAfterCurrentStartDate, endDate);
+        Date yearAfterCurrentStartDate = yearAfter(currentRequestStartDate);
+        Date endDate = stringToDate(fullRequestDataDto.getEndDate());
+        Date currentRequestEndDate = chooseEarlierDate(yearAfterCurrentStartDate, endDate);
 
         return RequestDataDto.builder()
                 .currencyCode(fullRequestDataDto.getCurrencyCode())
-                .startDate(DateMapper.dateToString(currentRequestStartDate))
-                .endDate(DateMapper.dateToString(currentRequestEndDate))
+                .startDate(dateToString(currentRequestStartDate))
+                .endDate(dateToString(currentRequestEndDate))
                 .build();
     }
 
