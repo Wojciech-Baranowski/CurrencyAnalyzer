@@ -16,8 +16,8 @@ export class AppComponent implements OnInit{
 
     filter = this.formBuilder.group({
         currencyCode: 'USD',
-        startDate: '2021-02-12',
-        endDate: '2022-02-12',
+        startDate: this.getYearBeforeDate(),
+        endDate: this.getTodayDate(),
     });
 
     bidTrace = {
@@ -124,6 +124,22 @@ export class AppComponent implements OnInit{
 
         this.differenceTraces = [this.bidDifferenceTrace, this.saleDifferenceTrace];
 
+    }
+
+    private getTodayDate(){
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear();
+        return yyyy + '-' + mm + '-' + dd;
+    }
+
+    private getYearBeforeDate(){
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0');
+        let yyyy = today.getFullYear() - 1;
+        return yyyy + '-' + mm + '-' + dd;
     }
 
 }

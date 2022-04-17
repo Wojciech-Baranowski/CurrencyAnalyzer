@@ -1,8 +1,8 @@
 
 <form [formGroup]="filter" (ngSubmit)="onSubmit()">
-    <input type="text" id="currencyCode" name="currencyCode" formControlName="currencyCode">
-    <input type="text" required pattern="\d{4}-\d{2}-\d{2}" id="startDate" name="startDate" formControlName="startDate">
-    <input type="text" required pattern="\d{4}-\d{2}-\d{2}" id="endDate" name="endDate" formControlName="endDate">
+    <input type="text" placeholder="XXX" name="currencyCode" formControlName="currencyCode">
+    <input type="text" placeholder="YYYY-MM-DD" required pattern="\d{4}-\d{2}-\d{2}" id="startDate" name="startDate" formControlName="startDate">
+    <input type="text" placeholder="YYYY-MM-DD" required pattern="\d{4}-\d{2}-\d{2}" id="endDate" name="endDate" formControlName="endDate">
     <button class="button" type="submit">Submit</button>
 </form>
 
