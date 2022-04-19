@@ -34,14 +34,18 @@ public class Currency {
         int listElementIndex = 0;
 
         for(LocalDate date = startDate; date.isBefore(dayAfter(endDate)); date = dayAfter(date)){
-            if(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date)){
-                listElementIndex++;
-            } else {
+            if(isDateMissing(listElementIndex, date)){
                 missedRecords.add(new CurrencyRecord(records.get(listElementIndex - 1), date));
+            } else {
+                listElementIndex++;
             }
         }
         records.addAll(missedRecords);
         records.sort(Comparator.comparingLong((CurrencyRecord r) -> r.getDate().toEpochDay()));
+    }
+
+    private boolean isDateMissing(int listElementIndex, LocalDate date) {
+        return !(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date));
     }
 
     public void trimRecordsToStartDate(LocalDate startDate){

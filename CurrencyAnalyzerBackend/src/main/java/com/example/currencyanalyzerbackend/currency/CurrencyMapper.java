@@ -2,11 +2,13 @@ package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyResponseDto;
-import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecordMapper;
-import com.example.currencyanalyzerbackend.currencyRecordDifference.CurrencyRecordDifferenceMapper;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import static com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecordMapper.objectListToResponseDtoList;
+import static com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecordMapper.requestedDtoListToObjectList;
+import static com.example.currencyanalyzerbackend.currencyRecordDifference.CurrencyRecordDifferenceMapper.dtoListToResponseDtoList;
 
 public class CurrencyMapper {
 
@@ -14,7 +16,7 @@ public class CurrencyMapper {
         return Currency.builder()
                 .name(requestedDto.getName())
                 .code(requestedDto.getCode())
-                .records(CurrencyRecordMapper.requestedDtoListToObjectList(requestedDto.getRecords()))
+                .records(requestedDtoListToObjectList(requestedDto.getRecords()))
                 .build();
     }
 
@@ -22,9 +24,8 @@ public class CurrencyMapper {
         return CurrencyResponseDto.builder()
                 .name(currency.getName())
                 .code(currency.getCode())
-                .records(CurrencyRecordMapper.objectListToResponseDtoList(currency.getRecords()))
-                .recordsDifferences(
-                        CurrencyRecordDifferenceMapper.dtoListToResponseDtoList(currency.getRecordsDifferences()))
+                .records(objectListToResponseDtoList(currency.getRecords()))
+                .recordsDifferences(dtoListToResponseDtoList(currency.getRecordsDifferences()))
                 .build();
     }
 

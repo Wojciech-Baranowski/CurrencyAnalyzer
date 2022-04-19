@@ -11,7 +11,7 @@ import {FormBuilder} from "@angular/forms";
 
 export class AppComponent implements OnInit{
 
-    private URL_PREFIX = 'http://localhost:8080/currency';
+    private URL = 'http://localhost:8080/currency';
     private data: CurrencyResponseDto;
 
     filter = this.formBuilder.group({
