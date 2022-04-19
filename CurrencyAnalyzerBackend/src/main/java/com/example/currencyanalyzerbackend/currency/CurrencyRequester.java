@@ -4,6 +4,7 @@ import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
+import com.example.currencyanalyzerbackend.exceptions.NotFoundException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -88,10 +89,11 @@ public class CurrencyRequester {
 
     private HttpResponse<String> handleRequestErrors(HttpResponse<String> response) {
         int status = response.statusCode();
-        switch (status){
-            case 400: throw new BadRequestException("Invalid Request data");
-            default: return response;
-        }
+        return switch (status) {
+            case 400 -> throw new BadRequestException("Invalid Request data");
+            case 404 -> throw new NotFoundException("Invalid currency");
+            default -> response;
+        };
     }
 
     private HttpRequest createRequest(RequestDataDto requestDataDto) {

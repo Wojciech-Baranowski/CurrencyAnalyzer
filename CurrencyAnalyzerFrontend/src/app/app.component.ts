@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
         mode: 'lines',
         line: {
             color: 'rgb(55, 128, 191)',
-            width: 1.5
+            width: 1
         },
         name: 'bidPrice'
     };
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit{
         mode: 'lines',
         line: {
             color: 'rgb(191, 55, 55)',
-            width: 1.5
+            width: 1
         },
         name: 'salePrice'
     };
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
         mode: 'lines',
         line: {
             color: 'rgb(55, 128, 191)',
-            width: 1
+            width: 0.6
         },
         name: 'bidPriceDifference'
     };
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit{
         mode: 'lines',
         line: {
             color: 'rgb(191, 55, 55)',
-            width: 1
+            width: 0.5
         },
         name: 'salePriceDifference'
     };
@@ -100,7 +100,13 @@ export class AppComponent implements OnInit{
                 this.createPricePlotTraces();
                 this.createDifferencePlotTraces();
                 this.layout.title = this.data.name + ' (' + this.filter.controls['currencyCode'].value + ')';
-            }, error => console.log(error));
+                document.getElementById("errorMessage")!.style.visibility = "hidden";
+            }
+                ,(error) => {
+                console.log(error)
+                document.getElementById("errorMessage")!.style.visibility = "visible";
+                document.getElementById("errorMessage")!.innerHTML = error.error;
+            });
     }
 
     private createPricePlotTraces(){
