@@ -1,12 +1,12 @@
 
 <form [formGroup]="filter" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="XXX" name="currencyCode" formControlName="currencyCode">
-    <input type="date" id="startDate" name="startDate" formControlName="startDate">
-    <input type="date" id="endDate" name="endDate" formControlName="endDate">
-    <button class="button" type="submit">Submit</button>
+  <input type="text" placeholder="XXX" name="currencyCode" formControlName="currencyCode">
+  <input type="date" id="startDate" name="startDate" formControlName="startDate">
+  <input type="date" id="endDate" name="endDate" formControlName="endDate">
+  <button class="button" type="submit">Submit</button>
 </form>
 
-<a id="errorMessage" visibility="hidden"></a>
+<p *ngIf="error">{{errorMessage}}</p>
 
 <plotly-plot [data]="priceTraces" [layout]="layout"></plotly-plot>
 
