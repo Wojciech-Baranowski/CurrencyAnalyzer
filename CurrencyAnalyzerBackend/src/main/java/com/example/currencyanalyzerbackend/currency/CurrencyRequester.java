@@ -3,6 +3,7 @@ package com.example.currencyanalyzerbackend.currency;
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
 import com.example.currencyanalyzerbackend.date.RequestDataDto;
+import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -81,9 +82,18 @@ public class CurrencyRequester {
         HttpRequest request = createRequest(requestDataDto);
 
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(this::handleRequestErrors)
                 .thenApply(HttpResponse::body)
                 .thenApply(CurrencyMapper::jsonStringToRequestedDto)
                 .join();
+    }
+
+    private HttpResponse<String> handleRequestErrors(HttpResponse<String> response) {
+        int status = response.statusCode();
+        switch (status){
+            case 400: throw new BadRequestException("Invalid Request data");
+            default: return response;
+        }
     }
 
     private HttpRequest createRequest(RequestDataDto requestDataDto) {

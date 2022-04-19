@@ -93,13 +93,14 @@ export class AppComponent implements OnInit{
         let currencyCode = this.filter.controls['currencyCode'].value;
         let startDate = this.filter.controls['startDate'].value;
         let endDate = this.filter.controls['endDate'].value;
-        this.http.get<CurrencyResponseDto>(`${this.URL_PREFIX}/${currencyCode}/${startDate}/${endDate}`)
+        this.http.post<CurrencyResponseDto>(`${this.URL_PREFIX}`,
+          {currencyCode: currencyCode, startDate: startDate, endDate: endDate})
             .subscribe(data => {
                 this.data = data;
                 this.createPricePlotTraces();
                 this.createDifferencePlotTraces();
                 this.layout.title = this.data.name + ' (' + this.filter.controls['currencyCode'].value + ')';
-            });
+            }, error => console.log(error));
     }
 
     private createPricePlotTraces(){

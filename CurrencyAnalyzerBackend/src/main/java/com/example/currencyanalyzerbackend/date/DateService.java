@@ -9,6 +9,8 @@ public class DateService {
 
     public static final long WEEK_IN_MILLISECONDS = 604800000L;
 
+    public static final long TIME_IN_MILLISECONDS_FROM_EPOCH_TO_2005 = 1104526800000L;
+
     public static boolean areDatesOverYearApart(Date date1, Date date2){
         return Math.abs(date1.getTime() - date2.getTime()) > YEAR_IN_MILLISECONDS;
     }

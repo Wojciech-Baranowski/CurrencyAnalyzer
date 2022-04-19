@@ -11,8 +11,14 @@ import static com.example.currencyanalyzerbackend.date.DateMapper.stringToDate;
 public class CurrencyService {
 
     private final CurrencyRequester currencyRequester;
+    private final CurrencyRequestValidator currencyRequestValidator;
 
     public CurrencyResponseDto getCurrencyRecords(RequestDataDto requestDataDto){
+        currencyRequestValidator.validate(requestDataDto);
+        return getCurrencyResponseDto(requestDataDto);
+    }
+
+    private CurrencyResponseDto getCurrencyResponseDto(RequestDataDto requestDataDto){
         CurrencyRequestedDto requestedDto = currencyRequester.getRequestedCurrency(requestDataDto);
         Currency currency = CurrencyMapper.requestedDtoToObject(requestedDto);
         currency.fillEmptyDays(requestDataDto);

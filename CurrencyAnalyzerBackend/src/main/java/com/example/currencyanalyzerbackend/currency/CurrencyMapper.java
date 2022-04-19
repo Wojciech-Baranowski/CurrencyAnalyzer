@@ -31,7 +31,6 @@ public class CurrencyMapper {
         try {
             return new ObjectMapper().readValue(jsonString, CurrencyRequestedDto.class);
         } catch (JsonProcessingException e) {
-            //TODO: data not found error
             throw new RuntimeException(e);
         }
     }
