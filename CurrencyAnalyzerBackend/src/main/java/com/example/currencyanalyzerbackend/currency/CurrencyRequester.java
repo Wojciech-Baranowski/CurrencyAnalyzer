@@ -2,22 +2,20 @@ package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
 import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
-import com.example.currencyanalyzerbackend.date.RequestDataDto;
+import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.currencyanalyzerbackend.date.DateMapper.dateToString;
-import static com.example.currencyanalyzerbackend.date.DateMapper.stringToDate;
-import static com.example.currencyanalyzerbackend.date.DateService.*;
+import static com.example.currencyanalyzerbackend.data.DateService.*;
 
 public class CurrencyRequester {
 
@@ -56,25 +54,25 @@ public class CurrencyRequester {
 
     private List<RequestDataDto> getShortRequestDataDtos(RequestDataDto fullRequestDataDto) {
         List<RequestDataDto> shortRequestDataDtos = new LinkedList<>();
-        Date endDate = stringToDate(fullRequestDataDto.getEndDate());
-        Date currentStartDate = weekBefore(stringToDate(fullRequestDataDto.getStartDate()));
+        LocalDate endDate = fullRequestDataDto.getEndDate();
+        LocalDate currentStartDate = weekBefore(fullRequestDataDto.getStartDate());
 
-        while (currentStartDate.before(endDate) || currentStartDate.equals(endDate)) {
+        while (currentStartDate.isBefore(endDate) || currentStartDate.equals(endDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));
             currentStartDate = yearAndDayAfter(currentStartDate);
         }
         return shortRequestDataDtos;
     }
 
-    private RequestDataDto getShortRequestDataDto(RequestDataDto fullRequestDataDto, Date currentRequestStartDate){
-        Date yearAfterCurrentStartDate = yearAfter(currentRequestStartDate);
-        Date endDate = stringToDate(fullRequestDataDto.getEndDate());
-        Date currentRequestEndDate = chooseEarlierDate(yearAfterCurrentStartDate, endDate);
+    private RequestDataDto getShortRequestDataDto(RequestDataDto fullRequestDataDto, LocalDate currentRequestStartDate){
+        LocalDate yearAfterCurrentStartDate = yearAfter(currentRequestStartDate);
+        LocalDate endDate = fullRequestDataDto.getEndDate();
+        LocalDate currentRequestEndDate = chooseEarlierDate(yearAfterCurrentStartDate, endDate);
 
         return RequestDataDto.builder()
                 .currencyCode(fullRequestDataDto.getCurrencyCode())
-                .startDate(dateToString(currentRequestStartDate))
-                .endDate(dateToString(currentRequestEndDate))
+                .startDate(currentRequestStartDate)
+                .endDate(currentRequestEndDate)
                 .build();
     }
 

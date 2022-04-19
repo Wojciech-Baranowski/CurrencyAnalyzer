@@ -1,9 +1,11 @@
-package com.example.currencyanalyzerbackend.date;
+package com.example.currencyanalyzerbackend.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +15,7 @@ public class RequestDataDto {
 
     String currencyCode;
 
-    String startDate;
+    LocalDate startDate;
 
-    String endDate;
+    LocalDate endDate;
 }

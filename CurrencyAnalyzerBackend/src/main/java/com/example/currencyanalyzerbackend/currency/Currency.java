@@ -1,24 +1,20 @@
 package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
-import com.example.currencyanalyzerbackend.currencyRecordDifference.CurrencyRecordDifferenceMapper;
 import com.example.currencyanalyzerbackend.currencyRecordDifference.dto.CurrencyRecordDifferenceDto;
-import com.example.currencyanalyzerbackend.date.DateMapper;
-import com.example.currencyanalyzerbackend.date.DateService;
-import com.example.currencyanalyzerbackend.date.RequestDataDto;
+import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.currencyanalyzerbackend.date.DateMapper.stringToDate;
-import static com.example.currencyanalyzerbackend.date.DateService.dayAfter;
+import static com.example.currencyanalyzerbackend.data.DateService.dayAfter;
 
 @Data
 @AllArgsConstructor
@@ -32,12 +28,12 @@ public class Currency {
     private List<CurrencyRecordDifferenceDto> recordsDifferences;
 
     public void fillEmptyDays(RequestDataDto fullRequestDataDto){
-        Date startDate = records.get(0).getDate();
-        Date endDate = stringToDate(fullRequestDataDto.getEndDate());
+        LocalDate startDate = records.get(0).getDate();
+        LocalDate endDate = fullRequestDataDto.getEndDate();
         List<CurrencyRecord> missedRecords = new LinkedList<>();
         int listElementIndex = 0;
 
-        for(Date date = startDate; date.getTime() < dayAfter(endDate).getTime(); date = dayAfter(date)){
+        for(LocalDate date = startDate; date.isBefore(dayAfter(endDate)); date = dayAfter(date)){
             if(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date)){
                 listElementIndex++;
             } else {
@@ -45,12 +41,12 @@ public class Currency {
             }
         }
         records.addAll(missedRecords);
-        records.sort(Comparator.comparingLong((CurrencyRecord r) -> r.getDate().getTime()));
+        records.sort(Comparator.comparingLong((CurrencyRecord r) -> r.getDate().toEpochDay()));
     }
 
-    public void trimRecordsToStartDate(Date startDate){
+    public void trimRecordsToStartDate(LocalDate startDate){
         records = records.stream()
-                .filter((CurrencyRecord r) -> !r.getDate().before(startDate))
+                .filter((CurrencyRecord r) -> !r.getDate().isBefore(startDate))
                 .collect(Collectors.toList());
     }
 

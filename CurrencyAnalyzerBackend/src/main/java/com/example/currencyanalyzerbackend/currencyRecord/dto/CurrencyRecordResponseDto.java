@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class CurrencyRecordResponseDto {
 
-    private String date;
+    private LocalDate date;
 
     private Double bidPrice;
 

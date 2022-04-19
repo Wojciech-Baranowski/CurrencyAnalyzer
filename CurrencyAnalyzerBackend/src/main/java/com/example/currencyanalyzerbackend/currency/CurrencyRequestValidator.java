@@ -1,11 +1,9 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.date.DateMapper;
-import com.example.currencyanalyzerbackend.date.DateService;
-import com.example.currencyanalyzerbackend.date.RequestDataDto;
+import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class CurrencyRequestValidator {
 
@@ -19,20 +17,20 @@ public class CurrencyRequestValidator {
     }
 
     private boolean isFirstDateAfterSecond(RequestDataDto requestDataDto){
-        Date startDate = DateMapper.stringToDate(requestDataDto.getStartDate());
-        Date endDate = DateMapper.stringToDate(requestDataDto.getEndDate());
-        return endDate.before(startDate);
+        LocalDate startDate = requestDataDto.getStartDate();
+        LocalDate endDate = requestDataDto.getEndDate();
+        return endDate.isBefore(startDate);
     }
 
     private boolean isStartDateTooEarly(RequestDataDto requestDataDto){
-        Date startDate = DateMapper.stringToDate(requestDataDto.getStartDate());
-        Date firstPossibleDate = new Date(DateService.TIME_IN_MILLISECONDS_FROM_EPOCH_TO_2005);
-        return firstPossibleDate.after(startDate);
+        LocalDate startDate = requestDataDto.getStartDate();
+        LocalDate firstPossibleDate = LocalDate.of(2005, 1, 1);
+        return firstPossibleDate.isAfter(startDate);
     }
 
     private boolean isEndDateTooLate(RequestDataDto requestDataDto){
-        Date endDate = DateMapper.stringToDate(requestDataDto.getEndDate());
-        Date currentDate = new Date();
-        return currentDate.before(endDate);
+        LocalDate endDate = requestDataDto.getEndDate();
+        LocalDate currentDate = LocalDate.now();
+        return currentDate.isBefore(endDate);
     }
 }
