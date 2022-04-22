@@ -15,12 +15,12 @@ aswell as their differences, on given date range (any valid range between 2005 a
 - Plotly.js.
 
 **Setup local:**
-- boot up main funcition from CurrencyAnalyzerBackendApplication.java,
-- execute "ng serve --proxy-config proxy.conf.json" command from CurrencyAnalyzerFrontend directory.
+- Boot up main funcition from CurrencyAnalyzerBackendApplication.java,
+- Execute "ng serve --proxy-config proxy.conf.json" command from CurrencyAnalyzerFrontend directory.
 
 **Build backend:**
-- execute "mvn clean install" command from CurrencyAnalyzerBackend directory.
+- Execute "mvn clean install" command from CurrencyAnalyzerBackend directory.
 
 **Ports:**
-- backend on 8080,
-- frontend on 4200.
+- Backend on 8080,
+- Frontend on 4200.
