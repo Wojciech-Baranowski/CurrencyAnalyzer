@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currencyRecord;
 
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordResponseDto;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordRequestedDto;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordResponseDto;
 import com.example.currencyanalyzerbackend.data.DateService;
 
 import java.util.List;

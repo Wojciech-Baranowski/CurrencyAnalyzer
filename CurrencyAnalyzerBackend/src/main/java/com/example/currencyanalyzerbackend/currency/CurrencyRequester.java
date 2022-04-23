@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordRequestedDto;
+import com.example.currencyanalyzerbackend.currency.dtos.CurrencyRequestedDto;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordRequestedDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 import com.example.currencyanalyzerbackend.exceptions.NotFoundException;

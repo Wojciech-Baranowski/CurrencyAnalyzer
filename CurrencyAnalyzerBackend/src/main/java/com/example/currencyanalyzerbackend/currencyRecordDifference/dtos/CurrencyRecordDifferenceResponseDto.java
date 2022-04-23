@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.currencyRecord.dto;
+package com.example.currencyanalyzerbackend.currencyRecordDifference.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +11,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyRecordResponseDto {
+public class CurrencyRecordDifferenceResponseDto {
 
     private LocalDate date;
 
-    private Double bidPrice;
+    private Double bidPriceDifference;
 
-    private Double salePrice;
+    private Double salePriceDifference;
 
 }

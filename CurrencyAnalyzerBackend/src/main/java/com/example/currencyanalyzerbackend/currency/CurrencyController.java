@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyResponseDto;
+import com.example.currencyanalyzerbackend.currency.dtos.CurrencyResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

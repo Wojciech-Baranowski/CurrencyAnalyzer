@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyRequestedDto;
-import com.example.currencyanalyzerbackend.currency.dto.CurrencyResponseDto;
+import com.example.currencyanalyzerbackend.currency.dtos.CurrencyRequestedDto;
+import com.example.currencyanalyzerbackend.currency.dtos.CurrencyResponseDto;
 import com.example.currencyanalyzerbackend.exceptions.BadRequestException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

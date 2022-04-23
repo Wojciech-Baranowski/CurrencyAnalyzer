@@ -1,7 +1,7 @@
-package com.example.currencyanalyzerbackend.currency.dto;
+package com.example.currencyanalyzerbackend.currency.dtos;
 
-import com.example.currencyanalyzerbackend.currencyRecord.dto.CurrencyRecordResponseDto;
-import com.example.currencyanalyzerbackend.currencyRecordDifference.dto.CurrencyRecordDifferenceResponseDto;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordResponseDto;
+import com.example.currencyanalyzerbackend.currencyRecordDifference.dtos.CurrencyRecordDifferenceResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currencyRecordDifference;
 
-import com.example.currencyanalyzerbackend.currencyRecordDifference.dto.CurrencyRecordDifferenceDto;
-import com.example.currencyanalyzerbackend.currencyRecordDifference.dto.CurrencyRecordDifferenceResponseDto;
+import com.example.currencyanalyzerbackend.currencyRecordDifference.dtos.CurrencyRecordDifferenceDto;
+import com.example.currencyanalyzerbackend.currencyRecordDifference.dtos.CurrencyRecordDifferenceResponseDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

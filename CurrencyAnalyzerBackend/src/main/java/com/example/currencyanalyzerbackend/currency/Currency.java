@@ -1,7 +1,7 @@
 package com.example.currencyanalyzerbackend.currency;
 
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
-import com.example.currencyanalyzerbackend.currencyRecordDifference.dto.CurrencyRecordDifferenceDto;
+import com.example.currencyanalyzerbackend.currencyRecordDifference.dtos.CurrencyRecordDifferenceDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,10 +44,6 @@ public class Currency {
         records.sort(Comparator.comparingLong((CurrencyRecord r) -> r.getDate().toEpochDay()));
     }
 
-    private boolean isDateMissing(int listElementIndex, LocalDate date) {
-        return !(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date));
-    }
-
     public void trimRecordsToStartDate(LocalDate startDate){
         records = records.stream()
                 .filter((CurrencyRecord r) -> !r.getDate().isBefore(startDate))
@@ -59,6 +55,10 @@ public class Currency {
         for(int i = 1; i < records.size(); i++){
             recordsDifferences.add(new CurrencyRecordDifferenceDto(records.get(i - 1), records.get(i)));
         }
+    }
+
+    private boolean isDateMissing(int listElementIndex, LocalDate date) {
+        return !(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date));
     }
 
 }

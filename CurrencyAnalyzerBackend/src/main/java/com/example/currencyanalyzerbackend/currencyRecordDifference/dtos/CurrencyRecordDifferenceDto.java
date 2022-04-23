@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.currencyRecordDifference.dto;
+package com.example.currencyanalyzerbackend.currencyRecordDifference.dtos;
 
 import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
 import lombok.AllArgsConstructor;

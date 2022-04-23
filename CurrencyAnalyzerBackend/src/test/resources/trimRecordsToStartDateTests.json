@@ -1,0 +1,514 @@
+[
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-01-01",
+                    "bidPrice": 3.6714,
+                    "salePrice": 3.7456
+                },
+                {
+                    "date": "2021-01-02",
+                    "bidPrice": 3.6714,
+                    "salePrice": 3.7456
+                },
+                {
+                    "date": "2021-01-03",
+                    "bidPrice": 3.6714,
+                    "salePrice": 3.7456
+                },
+                {
+                    "date": "2021-01-04",
+                    "bidPrice": 3.7208,
+                    "salePrice": 3.796
+                },
+                {
+                    "date": "2021-01-05",
+                    "bidPrice": 3.6687,
+                    "salePrice": 3.7429
+                },
+                {
+                    "date": "2021-01-06",
+                    "bidPrice": 3.6687,
+                    "salePrice": 3.7429
+                },
+                {
+                    "date": "2021-01-07",
+                    "bidPrice": 3.6671,
+                    "salePrice": 3.7411
+                },
+                {
+                    "date": "2021-01-08",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                },
+                {
+                    "date": "2021-01-09",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                },
+                {
+                    "date": "2021-01-10",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                }
+            ]
+        },
+        "startDate": "2021-01-04",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-01-04",
+                    "bidPrice": 3.7208,
+                    "salePrice": 3.796
+                },
+                {
+                    "date": "2021-01-05",
+                    "bidPrice": 3.6687,
+                    "salePrice": 3.7429
+                },
+                {
+                    "date": "2021-01-06",
+                    "bidPrice": 3.6687,
+                    "salePrice": 3.7429
+                },
+                {
+                    "date": "2021-01-07",
+                    "bidPrice": 3.6671,
+                    "salePrice": 3.7411
+                },
+                {
+                    "date": "2021-01-08",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                },
+                {
+                    "date": "2021-01-09",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                },
+                {
+                    "date": "2021-01-10",
+                    "bidPrice": 3.6382,
+                    "salePrice": 3.7118
+                }
+            ]
+        }
+    },
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-01-15",
+                    "bidPrice": 3.7115,
+                    "salePrice": 3.7865
+                },
+                {
+                    "date": "2021-01-16",
+                    "bidPrice": 3.7115,
+                    "salePrice": 3.7865
+                },
+                {
+                    "date": "2021-01-17",
+                    "bidPrice": 3.7115,
+                    "salePrice": 3.7865
+                },
+                {
+                    "date": "2021-01-18",
+                    "bidPrice": 3.7158,
+                    "salePrice": 3.7908
+                },
+                {
+                    "date": "2021-01-19",
+                    "bidPrice": 3.7161,
+                    "salePrice": 3.7911
+                },
+                {
+                    "date": "2021-01-20",
+                    "bidPrice": 3.7,
+                    "salePrice": 3.7748
+                },
+                {
+                    "date": "2021-01-21",
+                    "bidPrice": 3.7135,
+                    "salePrice": 3.7885
+                },
+                {
+                    "date": "2021-01-22",
+                    "bidPrice": 3.6932,
+                    "salePrice": 3.7678
+                }
+            ]
+        },
+        "startDate": "2021-01-20",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-01-20",
+                    "bidPrice": 3.7,
+                    "salePrice": 3.7748
+                },
+                {
+                    "date": "2021-01-21",
+                    "bidPrice": 3.7135,
+                    "salePrice": 3.7885
+                },
+                {
+                    "date": "2021-01-22",
+                    "bidPrice": 3.6932,
+                    "salePrice": 3.7678
+                }
+            ]
+        }
+    },
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-01-31",
+                    "bidPrice": 3.7118,
+                    "salePrice": 3.7868
+                },
+                {
+                    "date": "2021-02-01",
+                    "bidPrice": 3.69,
+                    "salePrice": 3.7646
+                },
+                {
+                    "date": "2021-02-02",
+                    "bidPrice": 3.6951,
+                    "salePrice": 3.7697
+                },
+                {
+                    "date": "2021-02-03",
+                    "bidPrice": 3.686,
+                    "salePrice": 3.7604
+                },
+                {
+                    "date": "2021-02-04",
+                    "bidPrice": 3.6992,
+                    "salePrice": 3.774
+                }
+            ]
+        },
+        "startDate": "2021-02-01",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-02-01",
+                    "bidPrice": 3.69,
+                    "salePrice": 3.7646
+                },
+                {
+                    "date": "2021-02-02",
+                    "bidPrice": 3.6951,
+                    "salePrice": 3.7697
+                },
+                {
+                    "date": "2021-02-03",
+                    "bidPrice": 3.686,
+                    "salePrice": 3.7604
+                },
+                {
+                    "date": "2021-02-04",
+                    "bidPrice": 3.6992,
+                    "salePrice": 3.774
+                }
+            ]
+        }
+    },
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2021-12-31",
+                    "bidPrice": 4.0151,
+                    "salePrice": 4.0963
+                },
+                {
+                    "date": "2022-01-01",
+                    "bidPrice": 4.0151,
+                    "salePrice": 4.0963
+                }
+            ]
+        },
+        "startDate": "2022-01-01",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2022-01-01",
+                    "bidPrice": 4.0151,
+                    "salePrice": 4.0963
+                }
+            ]
+        }
+    },
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2022-01-04",
+                    "bidPrice": 4.0097,
+                    "salePrice": 4.0907
+                },
+                {
+                    "date": "2022-01-05",
+                    "bidPrice": 4.0045,
+                    "salePrice": 4.0853
+                },
+                {
+                    "date": "2022-01-06",
+                    "bidPrice": 4.0045,
+                    "salePrice": 4.0853
+                },
+                {
+                    "date": "2022-01-07",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-08",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-09",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-10",
+                    "bidPrice": 3.9733,
+                    "salePrice": 4.0535
+                }
+            ]
+        },
+        "startDate": "2022-01-08",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2022-01-08",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-09",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-10",
+                    "bidPrice": 3.9733,
+                    "salePrice": 4.0535
+                }
+            ]
+        }
+    },
+    {
+        "currencyInput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2022-01-01",
+                    "bidPrice": 4.0151,
+                    "salePrice": 4.0963
+                },
+                {
+                    "date": "2022-01-02",
+                    "bidPrice": 4.0151,
+                    "salePrice": 4.0963
+                },
+                {
+                    "date": "2022-01-03",
+                    "bidPrice": 4.0194,
+                    "salePrice": 4.1006
+                },
+                {
+                    "date": "2022-01-04",
+                    "bidPrice": 4.0097,
+                    "salePrice": 4.0907
+                },
+                {
+                    "date": "2022-01-05",
+                    "bidPrice": 4.0045,
+                    "salePrice": 4.0853
+                },
+                {
+                    "date": "2022-01-06",
+                    "bidPrice": 4.0045,
+                    "salePrice": 4.0853
+                },
+                {
+                    "date": "2022-01-07",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-08",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-09",
+                    "bidPrice": 3.992,
+                    "salePrice": 4.0726
+                },
+                {
+                    "date": "2022-01-10",
+                    "bidPrice": 3.9733,
+                    "salePrice": 4.0535
+                },
+                {
+                    "date": "2022-01-11",
+                    "bidPrice": 3.9787,
+                    "salePrice": 4.0591
+                },
+                {
+                    "date": "2022-01-12",
+                    "bidPrice": 3.9729,
+                    "salePrice": 4.0531
+                },
+                {
+                    "date": "2022-01-13",
+                    "bidPrice": 3.9301,
+                    "salePrice": 4.0095
+                },
+                {
+                    "date": "2022-01-14",
+                    "bidPrice": 3.9128,
+                    "salePrice": 3.9918
+                },
+                {
+                    "date": "2022-01-15",
+                    "bidPrice": 3.9128,
+                    "salePrice": 3.9918
+                },
+                {
+                    "date": "2022-01-16",
+                    "bidPrice": 3.9128,
+                    "salePrice": 3.9918
+                },
+                {
+                    "date": "2022-01-17",
+                    "bidPrice": 3.9282,
+                    "salePrice": 4.0076
+                },
+                {
+                    "date": "2022-01-18",
+                    "bidPrice": 3.9249,
+                    "salePrice": 4.0041
+                },
+                {
+                    "date": "2022-01-19",
+                    "bidPrice": 3.9451,
+                    "salePrice": 4.0249
+                },
+                {
+                    "date": "2022-01-20",
+                    "bidPrice": 3.9488,
+                    "salePrice": 4.0286
+                },
+                {
+                    "date": "2022-01-21",
+                    "bidPrice": 3.9437,
+                    "salePrice": 4.0233
+                },
+                {
+                    "date": "2022-01-22",
+                    "bidPrice": 3.9437,
+                    "salePrice": 4.0233
+                },
+                {
+                    "date": "2022-01-23",
+                    "bidPrice": 3.9437,
+                    "salePrice": 4.0233
+                },
+                {
+                    "date": "2022-01-24",
+                    "bidPrice": 3.9592,
+                    "salePrice": 4.0392
+                },
+                {
+                    "date": "2022-01-25",
+                    "bidPrice": 4.0028,
+                    "salePrice": 4.0836
+                },
+                {
+                    "date": "2022-01-26",
+                    "bidPrice": 4.0317,
+                    "salePrice": 4.1131
+                },
+                {
+                    "date": "2022-01-27",
+                    "bidPrice": 4.022,
+                    "salePrice": 4.1032
+                },
+                {
+                    "date": "2022-01-28",
+                    "bidPrice": 4.0396,
+                    "salePrice": 4.1212
+                },
+                {
+                    "date": "2022-01-29",
+                    "bidPrice": 4.0396,
+                    "salePrice": 4.1212
+                },
+                {
+                    "date": "2022-01-30",
+                    "bidPrice": 4.0396,
+                    "salePrice": 4.1212
+                },
+                {
+                    "date": "2022-01-31",
+                    "bidPrice": 4.0713,
+                    "salePrice": 4.1535
+                }
+            ]
+        },
+        "startDate": "2022-01-31",
+        "currencyOutput":
+        {
+            "name": "dolar amerykański",
+            "code": "USD",
+            "records": [
+                {
+                    "date": "2022-01-31",
+                    "bidPrice": 4.0713,
+                    "salePrice": 4.1535
+                }
+            ]
+        }
+    }
+]

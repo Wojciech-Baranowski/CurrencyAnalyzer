@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.currencyRecord.dto;
+package com.example.currencyanalyzerbackend.currencyRecord.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
