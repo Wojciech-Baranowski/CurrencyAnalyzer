@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class FillEmptyDaysTestDto {
 
     private Currency currencyInput;
-    private RequestDataDto requestDataDto;
-    private Currency currencyOutput;
 
+    private RequestDataDto requestDataDto;
+
+    private Currency currencyOutput;
 }

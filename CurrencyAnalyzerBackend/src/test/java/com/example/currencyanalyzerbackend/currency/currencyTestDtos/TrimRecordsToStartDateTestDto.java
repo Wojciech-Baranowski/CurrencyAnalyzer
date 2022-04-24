@@ -14,7 +14,8 @@ import java.time.LocalDate;
 public class TrimRecordsToStartDateTestDto {
 
     private Currency currencyInput;
-    private LocalDate startDate;
-    private Currency currencyOutput;
 
+    private LocalDate startDate;
+
+    private Currency currencyOutput;
 }

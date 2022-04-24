@@ -56,7 +56,7 @@ public class CurrencyTest {
     }
 
     @Test
-    public void fill_empty_days_test(){
+    public void fill_empty_days_test() {
         //given
         String testPath = "fillEmptyDaysTests.json";
         List<FillEmptyDaysTestDto> testDtos = loadTests(testPath, FillEmptyDaysTestDto[].class);
@@ -76,5 +76,4 @@ public class CurrencyTest {
                 results
         );
     }
-
 }

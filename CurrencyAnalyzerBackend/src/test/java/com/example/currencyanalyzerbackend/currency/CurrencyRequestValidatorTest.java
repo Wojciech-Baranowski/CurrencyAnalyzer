@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CurrencyRequestValidatorTest {
     @Test
-    public void validate_test(){
+    public void validate_test() {
         //given
         CurrencyRequestValidator currencyRequestValidator = new CurrencyRequestValidator();
         String testPath = "validateTests.json";
@@ -26,5 +26,4 @@ public class CurrencyRequestValidatorTest {
             assertEquals(requestDataDto.getError(), exception.getMessage());
         }
     }
-
 }

@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class SetRecordsDifferencesTestDto {
 
     private Currency currencyInput;
-    private Currency currencyOutput;
 
+    private Currency currencyOutput;
 }

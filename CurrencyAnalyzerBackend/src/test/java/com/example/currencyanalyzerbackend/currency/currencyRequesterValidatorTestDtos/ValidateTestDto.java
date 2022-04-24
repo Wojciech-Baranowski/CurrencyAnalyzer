@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class ValidateTestDto {
 
     private RequestDataDto requestDataDto;
-    private String error;
 
+    private String error;
 }

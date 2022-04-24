@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CurrencyRequesterTest {
 
     @Test
-    public void get_requested_currency_test(){
+    public void get_requested_currency_test() {
         //given
         CurrencyRequester currencyRequester = new CurrencyRequester();
         String testPath = "getRequestedCurrencyTests.json";

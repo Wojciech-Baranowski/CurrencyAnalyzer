@@ -14,14 +14,15 @@ public class TestLoader {
     private static TestLoader TEST_LOADER = null;
     private final ObjectMapper objectMapper;
 
-    private TestLoader(){
+    private TestLoader() {
         objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
     }
 
-    public static <T> List<T> loadTests(String resource, Class<T[]> classType){
-        if(TEST_LOADER == null)
+    public static <T> List<T> loadTests(String resource, Class<T[]> classType) {
+        if(TEST_LOADER == null) {
             TEST_LOADER = new TestLoader();
+        }
         try {
             File file = new File(requireNonNull(TestLoader.class.getClassLoader().getResource(resource)).getFile());
             return List.of(TEST_LOADER.objectMapper.readValue(file, classType));
@@ -29,5 +30,4 @@ public class TestLoader {
             throw new RuntimeException(e);
         }
     }
-    
 }

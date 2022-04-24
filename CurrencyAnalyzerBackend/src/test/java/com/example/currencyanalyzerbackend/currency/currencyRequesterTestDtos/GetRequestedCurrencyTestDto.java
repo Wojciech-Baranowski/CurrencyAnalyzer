@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class GetRequestedCurrencyTestDto {
 
     private RequestDataDto requestDataDto;
-    private CurrencyRequestedDto requestedDataDto;
 
+    private CurrencyRequestedDto requestedDataDto;
 }
