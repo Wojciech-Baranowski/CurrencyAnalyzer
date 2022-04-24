@@ -11,6 +11,7 @@ as well as their differences, on given date range (any valid range between 2005 
 - Spring Boot
 - Jackson
 - Lombok
+- JUnit
 
 **Frontend libraries:**
 
