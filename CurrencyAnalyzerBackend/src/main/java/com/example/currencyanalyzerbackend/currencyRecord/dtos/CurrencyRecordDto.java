@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.currencyRecord;
+package com.example.currencyanalyzerbackend.currencyRecord.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyRecord {
+public class CurrencyRecordDto {
 
     private LocalDate date;
 
@@ -19,7 +19,7 @@ public class CurrencyRecord {
 
     private Double salePrice;
 
-    public CurrencyRecord(CurrencyRecord currencyRecord, LocalDate date){
+    public CurrencyRecordDto(CurrencyRecordDto currencyRecord, LocalDate date){
         this.date = date;
         this.bidPrice = currencyRecord.getBidPrice();
         this.salePrice = currencyRecord.getSalePrice();

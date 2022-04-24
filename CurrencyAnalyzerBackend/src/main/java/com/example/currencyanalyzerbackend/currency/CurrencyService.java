@@ -5,6 +5,8 @@ import com.example.currencyanalyzerbackend.currency.dtos.CurrencyResponseDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import lombok.AllArgsConstructor;
 
+import static com.example.currencyanalyzerbackend.data.RequestDataService.weekEarlier;
+
 @AllArgsConstructor
 public class CurrencyService {
 
@@ -17,7 +19,7 @@ public class CurrencyService {
     }
 
     private CurrencyResponseDto getCurrencyResponseDto(RequestDataDto requestDataDto){
-        CurrencyRequestedDto requestedDto = currencyRequester.getRequestedCurrency(requestDataDto);
+        CurrencyRequestedDto requestedDto = currencyRequester.getRequestedCurrency(weekEarlier(requestDataDto));
         Currency currency = CurrencyMapper.requestedDtoToObject(requestedDto);
         currency.fillEmptyDays(requestDataDto);
         currency.trimRecordsToStartDate(requestDataDto.getStartDate());

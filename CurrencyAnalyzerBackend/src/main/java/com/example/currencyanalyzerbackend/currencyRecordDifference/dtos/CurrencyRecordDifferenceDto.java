@@ -1,6 +1,6 @@
 package com.example.currencyanalyzerbackend.currencyRecordDifference.dtos;
 
-import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class CurrencyRecordDifferenceDto {
 
     private Double salePriceDifference;
 
-    public CurrencyRecordDifferenceDto(CurrencyRecord record1, CurrencyRecord record2){
+    public CurrencyRecordDifferenceDto(CurrencyRecordDto record1, CurrencyRecordDto record2){
         date = record2.getDate();
         bidPriceDifference = round(record2.getBidPrice() - record1.getBidPrice(), 4);
         salePriceDifference = round(record2.getSalePrice() - record1.getSalePrice(), 4);

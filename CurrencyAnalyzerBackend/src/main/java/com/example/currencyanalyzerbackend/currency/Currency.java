@@ -1,6 +1,6 @@
 package com.example.currencyanalyzerbackend.currency;
 
-import com.example.currencyanalyzerbackend.currencyRecord.CurrencyRecord;
+import com.example.currencyanalyzerbackend.currencyRecord.dtos.CurrencyRecordDto;
 import com.example.currencyanalyzerbackend.currencyRecordDifference.dtos.CurrencyRecordDifferenceDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.currencyanalyzerbackend.data.DateService.dayAfter;
+import static com.example.currencyanalyzerbackend.date.DateService.dayAfter;
 
 @Data
 @AllArgsConstructor
@@ -24,29 +24,29 @@ public class Currency {
 
     private String name;
     private String code;
-    private List<CurrencyRecord> records;
+    private List<CurrencyRecordDto> records;
     private List<CurrencyRecordDifferenceDto> recordsDifferences;
 
     public void fillEmptyDays(RequestDataDto fullRequestDataDto){
         LocalDate startDate = records.get(0).getDate();
         LocalDate endDate = fullRequestDataDto.getEndDate();
-        List<CurrencyRecord> missedRecords = new LinkedList<>();
+        List<CurrencyRecordDto> missedRecords = new LinkedList<>();
         int listElementIndex = 0;
 
         for(LocalDate date = startDate; date.isBefore(dayAfter(endDate)); date = dayAfter(date)){
             if(isDateMissing(listElementIndex, date)){
-                missedRecords.add(new CurrencyRecord(records.get(listElementIndex - 1), date));
+                missedRecords.add(new CurrencyRecordDto(records.get(listElementIndex - 1), date));
             } else {
                 listElementIndex++;
             }
         }
         records.addAll(missedRecords);
-        records.sort(Comparator.comparingLong((CurrencyRecord r) -> r.getDate().toEpochDay()));
+        records.sort(Comparator.comparingLong((CurrencyRecordDto r) -> r.getDate().toEpochDay()));
     }
 
     public void trimRecordsToStartDate(LocalDate startDate){
         records = records.stream()
-                .filter((CurrencyRecord r) -> !r.getDate().isBefore(startDate))
+                .filter((CurrencyRecordDto r) -> !r.getDate().isBefore(startDate))
                 .collect(Collectors.toList());
     }
 

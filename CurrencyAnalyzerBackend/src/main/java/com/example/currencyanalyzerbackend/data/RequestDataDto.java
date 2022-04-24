@@ -18,4 +18,5 @@ public class RequestDataDto {
     LocalDate startDate;
 
     LocalDate endDate;
+
 }

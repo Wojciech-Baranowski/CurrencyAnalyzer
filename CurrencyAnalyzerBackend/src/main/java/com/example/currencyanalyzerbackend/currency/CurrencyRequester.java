@@ -16,7 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.currencyanalyzerbackend.data.DateService.*;
+import static com.example.currencyanalyzerbackend.date.DateService.*;
 
 public class CurrencyRequester {
 
@@ -56,7 +56,7 @@ public class CurrencyRequester {
     private List<RequestDataDto> getShortRequestDataDtos(RequestDataDto fullRequestDataDto) {
         List<RequestDataDto> shortRequestDataDtos = new LinkedList<>();
         LocalDate endDate = fullRequestDataDto.getEndDate();
-        LocalDate currentStartDate = weekBefore(fullRequestDataDto.getStartDate());
+        LocalDate currentStartDate = fullRequestDataDto.getStartDate();
 
         while (currentStartDate.isBefore(endDate) || currentStartDate.equals(endDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));

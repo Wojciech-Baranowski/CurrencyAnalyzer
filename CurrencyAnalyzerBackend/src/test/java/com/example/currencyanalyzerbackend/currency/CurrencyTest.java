@@ -27,10 +27,10 @@ public class CurrencyTest {
 
         //then
         assertEquals(
-                results,
                 testDtos.stream()
                         .map(TrimRecordsToStartDateTestDto::getCurrencyOutput)
-                        .toList()
+                        .toList(),
+                results
         );
     }
 
@@ -48,10 +48,10 @@ public class CurrencyTest {
 
         //then
         assertEquals(
-                results,
                 testDtos.stream()
                         .map(SetRecordsDifferencesTestDto::getCurrencyOutput)
-                        .toList()
+                        .toList(),
+                results
         );
     }
 
@@ -70,10 +70,10 @@ public class CurrencyTest {
 
         //then
         assertEquals(
-                results,
                 testDtos.stream()
                         .map(FillEmptyDaysTestDto::getCurrencyOutput)
-                        .toList()
+                        .toList(),
+                results
         );
     }
 

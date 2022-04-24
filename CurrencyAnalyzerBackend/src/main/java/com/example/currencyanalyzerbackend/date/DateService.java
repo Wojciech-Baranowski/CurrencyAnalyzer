@@ -1,4 +1,4 @@
-package com.example.currencyanalyzerbackend.data;
+package com.example.currencyanalyzerbackend.date;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -20,18 +20,8 @@ public class DateService {
                 .plusDays(1);
     }
 
-    public static LocalDate weekBefore(LocalDate date){
-        return date.minusWeeks(1);
-    }
-
     public static LocalDate chooseEarlierDate(LocalDate date1, LocalDate date2){
         return date1.isBefore(date2) ? date1 : date2;
-    }
-
-    public static LocalDate dateToLocalDate(Date date) {
-        return date.toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
     }
 
 }
