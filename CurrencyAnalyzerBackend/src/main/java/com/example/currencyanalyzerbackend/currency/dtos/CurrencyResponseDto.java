@@ -22,5 +22,4 @@ public class CurrencyResponseDto {
     private List<CurrencyRecordResponseDto> records;
 
     private List<CurrencyRecordDifferenceResponseDto> recordsDifferences;
-
 }

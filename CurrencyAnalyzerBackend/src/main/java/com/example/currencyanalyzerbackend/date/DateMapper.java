@@ -11,5 +11,4 @@ public class DateMapper {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-
 }

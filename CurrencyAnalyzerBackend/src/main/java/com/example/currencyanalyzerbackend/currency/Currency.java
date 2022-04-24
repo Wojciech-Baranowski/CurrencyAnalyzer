@@ -27,14 +27,14 @@ public class Currency {
     private List<CurrencyRecordDto> records;
     private List<CurrencyRecordDifferenceDto> recordsDifferences;
 
-    public void fillEmptyDays(RequestDataDto fullRequestDataDto){
+    void fillEmptyDays(RequestDataDto fullRequestDataDto) {
         LocalDate startDate = records.get(0).getDate();
         LocalDate endDate = fullRequestDataDto.getEndDate();
         List<CurrencyRecordDto> missedRecords = new LinkedList<>();
         int listElementIndex = 0;
 
         for(LocalDate date = startDate; date.isBefore(dayAfter(endDate)); date = dayAfter(date)){
-            if(isDateMissing(listElementIndex, date)){
+            if(isDateMissing(listElementIndex, date)) {
                 missedRecords.add(new CurrencyRecordDto(records.get(listElementIndex - 1), date));
             } else {
                 listElementIndex++;
@@ -44,15 +44,15 @@ public class Currency {
         records.sort(Comparator.comparingLong((CurrencyRecordDto r) -> r.getDate().toEpochDay()));
     }
 
-    public void trimRecordsToStartDate(LocalDate startDate){
+    void trimRecordsToStartDate(LocalDate startDate) {
         records = records.stream()
                 .filter((CurrencyRecordDto r) -> !r.getDate().isBefore(startDate))
                 .collect(Collectors.toList());
     }
 
-    public void setRecordsDifferences(){
+    void setRecordsDifferences() {
         recordsDifferences = new LinkedList<>();
-        for(int i = 1; i < records.size(); i++){
+        for(int i = 1; i < records.size(); i++) {
             recordsDifferences.add(new CurrencyRecordDifferenceDto(records.get(i - 1), records.get(i)));
         }
     }
@@ -60,5 +60,4 @@ public class Currency {
     private boolean isDateMissing(int listElementIndex, LocalDate date) {
         return !(listElementIndex < records.size() && records.get(listElementIndex).getDate().equals(date));
     }
-
 }

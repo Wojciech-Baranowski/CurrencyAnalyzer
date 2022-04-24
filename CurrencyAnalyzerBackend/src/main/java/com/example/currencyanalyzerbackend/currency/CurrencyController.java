@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 public class CurrencyController {
 
     private final CurrencyService currencyService;
+
     @PostMapping
-    public CurrencyResponseDto getCurrencyRecords(@RequestBody RequestDataDto requestDataDto){
+    public CurrencyResponseDto getCurrencyRecords(@RequestBody RequestDataDto requestDataDto) {
         return currencyService.getCurrencyRecords(requestDataDto);
     }
-
 }

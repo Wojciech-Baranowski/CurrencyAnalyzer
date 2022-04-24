@@ -5,6 +5,8 @@ import com.example.currencyanalyzerbackend.currency.dtos.CurrencyResponseDto;
 import com.example.currencyanalyzerbackend.data.RequestDataDto;
 import lombok.AllArgsConstructor;
 
+import static com.example.currencyanalyzerbackend.currency.CurrencyMapper.objectToResponseDto;
+import static com.example.currencyanalyzerbackend.currency.CurrencyMapper.requestedDtoToObject;
 import static com.example.currencyanalyzerbackend.data.RequestDataService.weekEarlier;
 
 @AllArgsConstructor
@@ -13,18 +15,17 @@ public class CurrencyService {
     private final CurrencyRequester currencyRequester;
     private final CurrencyRequestValidator currencyRequestValidator;
 
-    public CurrencyResponseDto getCurrencyRecords(RequestDataDto requestDataDto){
+    CurrencyResponseDto getCurrencyRecords(RequestDataDto requestDataDto) {
         currencyRequestValidator.validate(requestDataDto);
         return getCurrencyResponseDto(requestDataDto);
     }
 
-    private CurrencyResponseDto getCurrencyResponseDto(RequestDataDto requestDataDto){
+    private CurrencyResponseDto getCurrencyResponseDto(RequestDataDto requestDataDto) {
         CurrencyRequestedDto requestedDto = currencyRequester.getRequestedCurrency(weekEarlier(requestDataDto));
-        Currency currency = CurrencyMapper.requestedDtoToObject(requestedDto);
+        Currency currency = requestedDtoToObject(requestedDto);
         currency.fillEmptyDays(requestDataDto);
         currency.trimRecordsToStartDate(requestDataDto.getStartDate());
         currency.setRecordsDifferences();
-        return CurrencyMapper.objectToResponseDto(currency);
+        return objectToResponseDto(currency);
     }
-
 }

@@ -25,5 +25,4 @@ public class CurrencyRecordRequestedDto {
 
     @JsonProperty("ask")
     private Double salePrice;
-
 }

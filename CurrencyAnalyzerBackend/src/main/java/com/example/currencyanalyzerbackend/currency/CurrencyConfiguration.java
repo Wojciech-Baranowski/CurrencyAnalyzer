@@ -7,19 +7,19 @@ import org.springframework.context.annotation.Configuration;
 public class CurrencyConfiguration {
 
     @Bean
-    public CurrencyRequestValidator currencyRequestValidator(){
+    public CurrencyRequestValidator currencyRequestValidator() {
         return new CurrencyRequestValidator();
     }
     @Bean
-    public CurrencyRequester currencyRequester(){
+    public CurrencyRequester currencyRequester() {
         return new CurrencyRequester();
     }
 
     @Bean
-    public CurrencyService currencyService(
+    public CurrencyService currencyService (
             CurrencyRequester currencyRequester,
-            CurrencyRequestValidator currencyRequestValidator){
+            CurrencyRequestValidator currencyRequestValidator
+    ){
         return new CurrencyService(currencyRequester, currencyRequestValidator);
     }
-
 }

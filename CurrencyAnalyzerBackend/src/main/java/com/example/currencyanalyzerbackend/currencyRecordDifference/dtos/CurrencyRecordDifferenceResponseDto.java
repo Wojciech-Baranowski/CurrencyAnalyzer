@@ -18,5 +18,4 @@ public class CurrencyRecordDifferenceResponseDto {
     private Double bidPriceDifference;
 
     private Double salePriceDifference;
-
 }

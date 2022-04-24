@@ -13,10 +13,9 @@ import java.time.LocalDate;
 @Builder
 public class RequestDataDto {
 
-    String currencyCode;
+    private String currencyCode;
 
-    LocalDate startDate;
+    private LocalDate startDate;
 
-    LocalDate endDate;
-
+    private LocalDate endDate;
 }

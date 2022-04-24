@@ -24,11 +24,11 @@ public class CurrencyRequester {
 
     private final HttpClient client;
 
-    public CurrencyRequester() {
+    CurrencyRequester() {
         client = HttpClient.newHttpClient();
     }
 
-    public CurrencyRequestedDto getRequestedCurrency(RequestDataDto fullRequestDataDto) {
+    CurrencyRequestedDto getRequestedCurrency(RequestDataDto fullRequestDataDto) {
         List<CurrencyRequestedDto> shortRequestedCurrencyDtos = getShortRequestedCurrencyDtos(fullRequestDataDto);
 
         return CurrencyRequestedDto.builder()
@@ -39,15 +39,16 @@ public class CurrencyRequester {
                 .build();
     }
 
-    private List<CurrencyRecordRequestedDto> mergeRequestedCurrencyRecordsDtos(
-            List<CurrencyRequestedDto> shortRequestedCurrencyDtos) {
+    private List<CurrencyRecordRequestedDto> mergeRequestedCurrencyRecordsDtos (
+            List<CurrencyRequestedDto> shortRequestedCurrencyDtos
+    ){
         return shortRequestedCurrencyDtos.stream()
                 .map(CurrencyRequestedDto::getRecords)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
     }
 
-    private List<CurrencyRequestedDto> getShortRequestedCurrencyDtos(RequestDataDto fullRequestDataDto){
+    private List<CurrencyRequestedDto> getShortRequestedCurrencyDtos(RequestDataDto fullRequestDataDto) {
         return getShortRequestDataDtos(fullRequestDataDto).stream()
                 .map(this::request)
                 .collect(Collectors.toList());
@@ -58,14 +59,22 @@ public class CurrencyRequester {
         LocalDate endDate = fullRequestDataDto.getEndDate();
         LocalDate currentStartDate = fullRequestDataDto.getStartDate();
 
-        while (currentStartDate.isBefore(endDate) || currentStartDate.equals(endDate)) {
+        while (isNextRequestPartitionPossible(endDate, currentStartDate)) {
             shortRequestDataDtos.add(getShortRequestDataDto(fullRequestDataDto, currentStartDate));
             currentStartDate = yearAndDayAfter(currentStartDate);
         }
         return shortRequestDataDtos;
     }
 
-    private RequestDataDto getShortRequestDataDto(RequestDataDto fullRequestDataDto, LocalDate currentRequestStartDate){
+    private boolean isNextRequestPartitionPossible(LocalDate endDate, LocalDate currentStartDate) {
+        return currentStartDate.isBefore(endDate) || currentStartDate.equals(endDate);
+    }
+
+
+    private RequestDataDto getShortRequestDataDto(
+            RequestDataDto fullRequestDataDto,
+            LocalDate currentRequestStartDate
+    ){
         LocalDate yearAfterCurrentStartDate = yearAfter(currentRequestStartDate);
         LocalDate endDate = fullRequestDataDto.getEndDate();
         LocalDate currentRequestEndDate = chooseEarlierDate(yearAfterCurrentStartDate, endDate);
@@ -77,7 +86,7 @@ public class CurrencyRequester {
                 .build();
     }
 
-    private CurrencyRequestedDto request(RequestDataDto requestDataDto){
+    private CurrencyRequestedDto request(RequestDataDto requestDataDto) {
         HttpRequest request = createRequest(requestDataDto);
 
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
@@ -89,6 +98,7 @@ public class CurrencyRequester {
 
     private HttpResponse<String> handleRequestErrors(HttpResponse<String> response) {
         int status = response.statusCode();
+
         return switch (status) {
             case 400 -> throw new BadRequestException("Invalid Request data");
             case 404 -> throw new NotFoundException("Invalid currency");
@@ -98,22 +108,20 @@ public class CurrencyRequester {
 
     private HttpRequest createRequest(RequestDataDto requestDataDto) {
         String url = createUrl(requestDataDto);
+
         return HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();
     }
 
     private String createUrl(RequestDataDto requestDataDto) {
-        return new StringBuffer()
-                .append(URL_PREFIX)
-                .append(requestDataDto.getCurrencyCode())
-                .append('/')
-                .append(requestDataDto.getStartDate())
-                .append('/')
-                .append(requestDataDto.getEndDate())
-                .toString();
+        return URL_PREFIX +
+                requestDataDto.getCurrencyCode() +
+                '/' +
+                requestDataDto.getStartDate() +
+                '/' +
+                requestDataDto.getEndDate();
     }
-
 }
 
 

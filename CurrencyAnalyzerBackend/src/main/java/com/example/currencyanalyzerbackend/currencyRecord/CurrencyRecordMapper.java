@@ -11,13 +11,13 @@ import static com.example.currencyanalyzerbackend.date.DateMapper.dateToLocalDat
 
 public class CurrencyRecordMapper {
 
-    public static List<CurrencyRecordDto> requestedDtoListToDtoList(List<CurrencyRecordRequestedDto> requestedDtos){
+    public static List<CurrencyRecordDto> requestedDtoListToDtoList(List<CurrencyRecordRequestedDto> requestedDtos) {
         return requestedDtos.stream()
                 .map(CurrencyRecordMapper::requestedDtoToDto)
                 .collect(Collectors.toList());
     }
 
-    public static CurrencyRecordDto requestedDtoToDto(CurrencyRecordRequestedDto requestedDto){
+    public static CurrencyRecordDto requestedDtoToDto(CurrencyRecordRequestedDto requestedDto) {
         return CurrencyRecordDto.builder()
                 .date(dateToLocalDate(requestedDto.getDate()))
                 .bidPrice(requestedDto.getBidPrice())
@@ -25,20 +25,17 @@ public class CurrencyRecordMapper {
                 .build();
     }
 
-    public static List<CurrencyRecordResponseDto> dtoListToResponseDtoList(List<CurrencyRecordDto> records){
+    public static List<CurrencyRecordResponseDto> dtoListToResponseDtoList(List<CurrencyRecordDto> records) {
         return records.stream()
                 .map(CurrencyRecordMapper::dtoToResponseDto)
                 .collect(Collectors.toList());
     }
 
-    public static CurrencyRecordResponseDto dtoToResponseDto(CurrencyRecordDto record){
+    public static CurrencyRecordResponseDto dtoToResponseDto(CurrencyRecordDto record) {
         return CurrencyRecordResponseDto.builder()
                 .date(record.getDate())
                 .bidPrice(record.getBidPrice())
                 .salePrice(record.getSalePrice())
                 .build();
     }
-
-
-
 }

@@ -22,10 +22,9 @@ public class CurrencyRecordDifferenceDto {
 
     private Double salePriceDifference;
 
-    public CurrencyRecordDifferenceDto(CurrencyRecordDto record1, CurrencyRecordDto record2){
+    public CurrencyRecordDifferenceDto(CurrencyRecordDto record1, CurrencyRecordDto record2) {
         date = record2.getDate();
         bidPriceDifference = round(record2.getBidPrice() - record1.getBidPrice(), 4);
         salePriceDifference = round(record2.getSalePrice() - record1.getSalePrice(), 4);
     }
-
 }

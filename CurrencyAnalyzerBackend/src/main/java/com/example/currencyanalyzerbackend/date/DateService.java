@@ -1,8 +1,6 @@
 package com.example.currencyanalyzerbackend.date;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class DateService {
 
@@ -23,5 +21,4 @@ public class DateService {
     public static LocalDate chooseEarlierDate(LocalDate date1, LocalDate date2){
         return date1.isBefore(date2) ? date1 : date2;
     }
-
 }

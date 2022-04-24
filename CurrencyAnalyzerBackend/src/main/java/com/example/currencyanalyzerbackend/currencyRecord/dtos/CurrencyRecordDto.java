@@ -19,10 +19,9 @@ public class CurrencyRecordDto {
 
     private Double salePrice;
 
-    public CurrencyRecordDto(CurrencyRecordDto currencyRecord, LocalDate date){
+    public CurrencyRecordDto(CurrencyRecordDto currencyRecord, LocalDate date) {
         this.date = date;
         this.bidPrice = currencyRecord.getBidPrice();
         this.salePrice = currencyRecord.getSalePrice();
     }
-
 }
