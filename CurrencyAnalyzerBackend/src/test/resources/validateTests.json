@@ -1,0 +1,56 @@
+[
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2022-01-01",
+      "endDate": "2021-01-01"
+    },
+    "error": "Invalid date order"
+  },
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2022-01-01",
+      "endDate": "2021-12-31"
+    },
+    "error": "Invalid date order"
+  },
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2003-05-13",
+      "endDate": "2022-01-01"
+    },
+    "error": "Invalid start date"
+  },
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2004-12-31",
+      "endDate": "2022-01-01"
+    },
+    "error": "Invalid start date"
+  },
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2010-10-10",
+      "endDate": "2022-06-01"
+    },
+    "error": "Invalid end date"
+  },
+  {
+    "requestDataDto":
+    {
+      "currencyCode": "USD",
+      "startDate": "2021-02-02",
+      "endDate": "2023-01-01"
+    },
+    "error": "Invalid end date"
+  }
+]

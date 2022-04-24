@@ -25,8 +25,10 @@ public class CurrencyRequesterTest {
                 .toList();
 
         //then
-        assertEquals(testDtos.stream()
-                .map(GetRequestedCurrencyTestDto::getRequestedDataDto)
-                .toList(), results);
+        assertEquals(
+                testDtos.stream()
+                        .map(GetRequestedCurrencyTestDto::getRequestedDataDto)
+                        .toList(),
+                results);
     }
 }
